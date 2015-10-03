@@ -2,13 +2,13 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
-  spec.name          = "fluent-plugin-rds-pgsql-log"
+  spec.name          = "fluent-plugin-rds-pgsql-slow-query-log"
   spec.version       = "0.1.0"
-  spec.authors       = ["shinsaka"]
-  spec.email         = ["shinx1265@gmail.com"]
-  spec.summary       = "Amazon RDS for PostgreSQL log input plugin"
-  spec.description   = "fluentd plugin for Amazon RDS for PostgreSQL log input"
-  spec.homepage      = "https://github.com/shinsaka/fluent-plugin-rds-pgsql-log"
+  spec.authors       = ["hSATAC"]
+  spec.email         = ["hSATAC@gmail.com"]
+  spec.summary       = "Amazon RDS for PostgreSQL log input plugin with slow query support"
+  spec.description   = "fluentd plugin for Amazon RDS for PostgreSQL log input with slow query support"
+  spec.homepage      = "https://github.com/hSATAC/fluent-plugin-rds-pgsql-log"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

@@ -1,5 +1,5 @@
 class Fluent::RdsPgsqlLogInput < Fluent::Input
-  Fluent::Plugin.register_input('rds_pgsql_log', self)
+  Fluent::Plugin.register_input('rds_pgsql_slow_query_log', self)
 
   LOG_REGEXP = /^(?<time>\d{4}-\d{2}-\d{2} \d{2}\:\d{2}\:\d{2} .+?):(?<host>.*?):(?<user>.*?)@(?<database>.*?):\[(?<pid>.*?)\]:(?<message_level>.*?):(?<message>.*)$/
 

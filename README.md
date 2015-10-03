@@ -2,6 +2,8 @@
 
 ## Overview
 - Amazon Web Services RDS log input plugin for fluentd
+- Forked from [fluentd-plugin-rds-pgsql-log](https://github.com/shinsaka/fluent-plugin-rds-pgsql-log)
+- Add slow query duration parsing.
 
 ## Installation
 
