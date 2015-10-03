@@ -208,6 +208,12 @@ class Fluent::RdsPgsqlLogInput < Fluent::Input
             "message" => line_match[:message],
             "log_file_name" => log_file_name,
           }
+
+          # Parse duration for slow query
+          duration = line_match[:message].match(/duration: ([0-9\.]+) ms/)
+          if duration
+            record["duration"] = duration[1].to_f
+          end
         end
       end
       # emit last record
