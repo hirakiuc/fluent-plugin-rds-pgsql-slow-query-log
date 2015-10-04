@@ -14,6 +14,7 @@ class Fluent::RdsPgsqlLogInput < Fluent::Input
   def configure(conf)
     super
     require 'aws-sdk'
+    require 'date'
 
     raise Fluent::ConfigError.new("region is required") unless @region
     if !has_iam_role?
@@ -199,7 +200,7 @@ class Fluent::RdsPgsqlLogInput < Fluent::Input
 
           # set a record
           record = {
-            "time" => line_match[:time],
+            "time" => DateTime.parse(line_match[:time]).to_s,
             "host" => line_match[:host],
             "user" => line_match[:user],
             "database" => line_match[:database],
