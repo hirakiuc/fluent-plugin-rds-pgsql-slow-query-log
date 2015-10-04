@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["hSATAC@gmail.com"]
   spec.summary       = "Amazon RDS for PostgreSQL log input plugin with slow query support"
   spec.description   = "fluentd plugin for Amazon RDS for PostgreSQL log input with slow query support"
-  spec.homepage      = "https://github.com/hSATAC/fluent-plugin-rds-pgsql-log"
+  spec.homepage      = "https://github.com/hSATAC/fluent-plugin-rds-pgsql-slow-query-log"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
