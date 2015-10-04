@@ -4,6 +4,7 @@
 - Amazon Web Services RDS log input plugin for fluentd
 - Forked from [fluentd-plugin-rds-pgsql-log](https://github.com/shinsaka/fluent-plugin-rds-pgsql-log)
 - Add slow query duration parsing.
+- Modify time to ISO 8601 format for ELK
 
 ## Installation
 
@@ -26,7 +27,7 @@ SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt (If you using amazon linux)
 
 ```config
 <source>
-  type rds_pgsql_log
+  type rds_pgsql_slow_query_log
   # required
   region                 <region name>
   db_instance_identifier <instance identifier>
@@ -61,7 +62,7 @@ SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt (If you using amazon linux)
 ### json output example
 ```
 
-{"time":"2015-05-30 02:19:22 UTC",
+{"time":"2015-10-04T05:55:10+00:00",
  "host":"192.168.30.175(53092)",
  "user":"testuser",
  "database":"db1",
