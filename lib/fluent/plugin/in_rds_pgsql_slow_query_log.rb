@@ -1,7 +1,14 @@
+require 'fluent/input'
+
 class Fluent::RdsPgsqlLogInput < Fluent::Input
   Fluent::Plugin.register_input('rds_pgsql_slow_query_log', self)
 
   LOG_REGEXP = /^(?<time>\d{4}-\d{2}-\d{2} \d{2}\:\d{2}\:\d{2} .+?):(?<host>.*?):(?<user>.*?)@(?<database>.*?):\[(?<pid>.*?)\]:(?<message_level>.*?):(?<message>.*)$/
+
+  # Define 'router' method of v0.12 to support v0.10 or earlier
+  unless method_defined?(:router)
+    define_method('router') { Fluent::Engine }
+  end
 
   config_param :access_key_id, :string, :default => nil
   config_param :secret_access_key, :string, :default => nil
@@ -196,7 +203,7 @@ class Fluent::RdsPgsqlLogInput < Fluent::Input
           record["message"] << "\n" + raw_record unless record.nil?
         else
           # emit before record
-          Fluent::Engine.emit(@tag, Fluent::Engine.now, record) unless record.nil?
+          router.emit(@tag, Fluent::Engine.now, record) unless record.nil?
 
           # set a record
           record = {
@@ -218,7 +225,7 @@ class Fluent::RdsPgsqlLogInput < Fluent::Input
         end
       end
       # emit last record
-      Fluent::Engine.emit(@tag, Fluent::Engine.now, record) unless record.nil?
+      router.emit(@tag, Fluent::Engine.now, record) unless record.nil?
     rescue => e
       $log.warn e.message
     end
