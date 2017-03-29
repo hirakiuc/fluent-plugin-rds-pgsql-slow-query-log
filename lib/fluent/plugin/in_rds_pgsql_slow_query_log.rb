@@ -222,6 +222,12 @@ class Fluent::RdsPgsqlLogInput < Fluent::Input
           if duration
             record["duration"] = duration[1].to_f
           end
+
+          # Parse sql for slow query
+          sql_text = line_match[:message].match(/statement: (.*)$/)
+          if sql_text
+            record['sql_text'] = sql_text[1]
+          end
         end
       end
       # emit last record

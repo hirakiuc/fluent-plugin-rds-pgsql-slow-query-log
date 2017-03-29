@@ -69,7 +69,9 @@ SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt (If you using amazon linux)
  "pid":"9769",
  "message_level":"LOG",
  "message":"  statement: select 1;",
- "log_file_name":"error/postgresql.log.2015-05-30-02"
+ "log_file_name":"error/postgresql.log.2015-05-30-02",
+ "duration": 10.2,
+ "sql_text": select 1;"
 }
 ```
 
